@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <link href="http://gmpg.org/xfn/11" rel="profile">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <title>Marmorkuchen</title>
+
+        <script>
+        /* Prevent Firefox FOUC. */
+        let FF_FOUC_FIX;
+        </script>
+    </head>
+
+    <body>
+        <h1>Marmorkuchen</h1>
+
+<div class="recipe-controls">
+   <label for="marble-scale">Skalierung: </label>
+   <input type="range" id="marble-scale" min="0.5" max="4" step="0.1" value="1">
+   <span id="marble-scale-value">1.0x</span>
+</div>
+<p><strong>Zutaten:</strong></p>
+<ul>
+<li><span data-base="200" data-unit="g" data-roundto="25">200g</span> Butter</li>
+<li><span data-base="250" data-unit="g" data-roundto="25">250g</span> Zucker</li>
+<li><span data-base="125" data-unit="g" data-roundto="25">125g</span> Mehl</li>
+<li><span data-base="125" data-unit="g" data-roundto="25">125g</span> Maisstärke</li>
+<li><span data-base="0.5" data-unit="TL" data-unit-plural="TL" data-roundto="0.25">½ TL</span> Backpulver</li>
+<li><span data-base="1" data-unit="Päckchen" data-unit-plural="Päckchen" data-roundto="0.5">1 Päckchen</span> Vanillezucker</li>
+<li><span data-base="4" data-unit="Ei" data-unit-plural="Eier" data-roundto="1">4 Eier</span></li>
+<li><span data-base="2" data-unit="EL" data-unit-plural="EL" data-roundto="0.5">2 EL</span> Kakao</li>
+<li><span data-base="2" data-unit="EL" data-unit-plural="EL" data-roundto="0.5">2 EL</span> Zucker (für Kakao)</li>
+</ul>
+<p><strong>Zubereitung:</strong></p>
+<ol>
+<li>Butter in die Rührschüssel geben und mit Zucker, Mehl/Maisstärke, Eiern, Vanillezucker und Backpulver verrühren.</li>
+<li>Die Hälfte des Teigs in die gefettete Kuchenform geben, zur anderen Hälfte Kakao und Zucker hinzugeben und rühren.</li>
+<li>Backofen 15 Minuten bei 175°C mit Unterhitze vorheizen.</li>
+<li>Auf der unteren Schiene 60 Minuten backen.</li>
+<li>Den Kuchen nach dem Ausschalten des Backofens weitere 10 Minuten im Ofen lassen.</li>
+</ol>
+<style>
+.recipe-controls {
+    margin: 1em 0;
+    padding: 0.5em;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.recipe-controls label {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+.recipe-controls input[type="range"] {
+    margin: 0 0.5em;
+    width: 200px;
+}
+</style>
+<script>
+function roundToNearest25(value) {
+    return Math.round(value / 25) * 25;
+}
+
+function roundToInteger(value) {
+    return Math.round(value);
+}
+
+function roundToHalf(value) {
+    return Math.round(value * 2) / 2;
+}
+
+function updateIngredient(element, scale) {
+    const base = parseFloat(element.dataset.base);
+    const unit = element.dataset.unit;
+    const unitPlural = element.dataset.unitPlural;
+    const roundTo = parseFloat(element.dataset.roundto);
+
+    let scaledValue = base * scale;
+    let displayValue = Math.round(scaledValue / roundTo) * roundTo;
+
+    let displayText;
+    const fractionalPart = displayValue % 1;
+    const wholePart = Math.floor(displayValue);
+
+    if (Math.abs(fractionalPart - 0.25) < 0.001) {
+        displayText = wholePart === 0 ? "¼" : wholePart + "¼";
+    } else if (Math.abs(fractionalPart - 0.5) < 0.001) {
+        displayText = wholePart === 0 ? "½" : wholePart + "½";
+    } else if (Math.abs(fractionalPart - 0.75) < 0.001) {
+        displayText = wholePart === 0 ? "¾" : wholePart + "¾";
+    } else {
+        displayText = displayValue.toString();
+    }
+
+    let finalUnit = unit;
+    if (unitPlural && displayValue !== 1) {
+        finalUnit = unitPlural;
+    }
+
+    if (unit === 'g' || unit === 'ml') {
+        element.textContent = displayText + finalUnit;
+    } else {
+        element.textContent = displayText + ' ' + finalUnit;
+    }
+}
+
+function setupRecipeScaling(scaleId, valueId, recipeSelector) {
+    const slider = document.getElementById(scaleId);
+    const valueDisplay = document.getElementById(valueId);
+
+    slider.addEventListener('input', function() {
+        const scale = parseFloat(this.value);
+        valueDisplay.textContent = scale.toFixed(1) + 'x';
+
+        const ingredients = document.querySelectorAll(recipeSelector + ' [data-base]');
+        ingredients.forEach(ingredient => {
+            updateIngredient(ingredient, scale);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupRecipeScaling('marble-scale', 'marble-scale-value', 'h1:nth-of-type(1) ~ *');
+});
+</script>
+    </body>
+</html>
