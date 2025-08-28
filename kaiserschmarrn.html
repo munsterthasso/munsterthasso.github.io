@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <link href="http://gmpg.org/xfn/11" rel="profile">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <script src="/recipe.js"></script>
+        <title>Kaiserschmarrn</title>
+
+        <script>
+        /* Prevent Firefox FOUC. */
+        let FF_FOUC_FIX;
+        </script>
+    </head>
+
+    <body>
+        <h1>Kaiserschmarrn</h1>
+
+<div class="recipe-controls">
+   <label for="kaiserschmarrn-scale">Skalierung: </label>
+   <input type="range" id="kaiserschmarrn-scale" min="0.5" max="4" step="0.1" value="1">
+   <span id="kaiserschmarrn-scale-value">1.0x</span>
+</div>
+<p><strong>Zutaten:</strong></p> 
+<p><em>1x entspricht einer Portion.</em></p> 
+<ul> 
+   <li><span data-base="250" data-unit="ml" data-roundto="25">250ml</span> Milch</li> 
+   <li><span data-base="130" data-unit="g" data-roundto="10">130g</span> Mehl</li> 
+   <li><span data-base="2" data-unit="egg" data-unit-plural="eggs" data-roundto="1">2 Eier</span></li> 
+   <li><span data-base="25" data-unit="g" data-roundto="5">25g</span> Butter</li> 
+   <li>Rosinen</li> 
+   <li>Kristallzucker</li> 
+</ul>
+<p><strong>Zubereitung:</strong></p>
+<ol>
+  <li>Milch in eine große Schüssel gießen. Mehl nach und nach einrühren, bis die Masse glatt ist und darauf achten, dass das Mehl nicht klumpt.</li>
+  <li>Mindestens 30 Minuten ruhen lassen (2 Stunden funktionieren auch gut).</li>
+  <li>Pfanne bei hoher Hitze mit der Hälfte der Butter vorheizen.</li>
+  <li>Die Eier mit einer Gabel verquirlen&mdash;muss nicht perfekt sein.</li>
+  <li>Eier vorsichtig unter den geruhten Teig heben. Die Konsistenz des Teigs beibehalten, weniger rühren ist besser als mehr.</li>
+  <li>Teig 2&ndash;3 cm dick in die gebutterte Pfanne gießen und Rosinen schwungvoll in den Teig werfen. (Alternativ können Rosinen zuerst kurz in Butter angedünstet werden.) Mit Deckel abdecken, wenn möglich, und bei mittlerer Hitze backen/braten.</li>
+  <li>Wenn Ränder, Boden und idealerweise der größte Teil des Pfannkuchens fest geworden ist, wenden. Auf der zweiten Seite ähnlich lange garen/braten.</li>
+  <li>Schließlich Hitze erhöhen und in Stücke reißen, dabei die restliche Butter in einer Lücke schmelzen. Stücke wenden/rühren, um die Butter zu verteilen. Eine dünne Schicht Kristallzucker darüber streuen und gut verteilen. Mit Butter und Zucker nach Wunsch karamellisieren.</li>
+  <li>Mit Apfelmus oder Marmelade servieren.</li>
+</ol>
+<p><strong>Tipps:</strong></p>
+<ul>
+  <li>Zwei Kochöffel sind von Vorteil</li>
+  <li>Ein zu kleiner Deckel kann mit einem flach über den Pfannenrand gelegten Kochlöffel gestützt werden</li>
+  <li>Flüssigen Teig an den Rändern ablaufen lassen, bevor die festen Stücke gewendet werden</li>
+  <li>Die Pfanne bei niedriger Hitze etwas abkühlen lassen, bevor weitergearbeitet wird</li>
+</ul>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setupRecipeScaling('kaiserschmarrn-scale', 'kaiserschmarrn-scale-value', 'h1:nth-of-type(1) ~ *');
+});
+</script>
+    </body>
+</html>
