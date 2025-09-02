@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <link href="http://gmpg.org/xfn/11" rel="profile">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <script src="/recipe.js"></script>
+        <title>Brownies</title>
+
+        <script>
+        /* Prevent Firefox FOUC. */
+        let FF_FOUC_FIX;
+        </script>
+    </head>
+
+    <body>
+        <h1>Brownies</h1>
+
+<div class="recipe-controls">
+   <label for="brownies-scale">Skalierung: </label>
+   <input type="range" id="brownies-scale" min="0.5" max="4" step="0.1" value="1">
+   <span id="brownies-scale-value">1.0x</span>
+</div>
+<p><strong>Zutaten:</strong></p>
+<ul>
+<li><span data-base="600" data-unit="g" data-roundto="25">600g</span> Nuss-Nougat-Creme</li>
+<li><span data-base="6" data-unit="Ei" data-unit-plural="Eier" data-roundto="1">6 Eier</span></li>
+<li><span data-base="140" data-unit="g" data-roundto="25">140g</span> Mehl</li>
+</ul>
+<p><strong>Zubereitung:</strong></p>
+<ol>
+<li>Zuerst die Nuss-Nougat-Creme in eine Schüssel geben. 6 Eier und das Mehl hinzugeben und alles miteinander verrühren, sodass eine homogene Masse entsteht.</li>
+<li>Eine viereckige Auflaufform mit Backpapier auslegen. Die Masse einfüllen und gleichmäßig verteilen.</li>
+<li>Das Ganze ca. 25&ndash;30 Minuten bei 180 Grad Ober-/Unterhitze backen.</li>
+</ol>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setupRecipeScaling('brownies-scale', 'brownies-scale-value', 'h1:nth-of-type(1) ~ *');
+});
+</script>
+    </body>
+</html>
